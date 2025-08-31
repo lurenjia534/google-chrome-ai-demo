@@ -136,7 +136,7 @@ export default function Page() {
         if (status !== 'available' && !navigator.userActivation.isActive) {
             throw new Error('需要一次用户点击以开始下载语言检测模型。')
         }
-        const detector = await LD.create({
+        return LD.create({
             monitor(m: any) {
                 m.addEventListener('downloadprogress', (e: DownloadProgressEvent) => {
                     setLdProgress(Math.round(e.loaded * 100))
@@ -144,7 +144,6 @@ export default function Page() {
                 })
             },
         })
-        return detector
     }
 
     async function ensureTranslator(sourceLanguage: string, targetLanguage: string) {
@@ -155,7 +154,7 @@ export default function Page() {
         if (status !== 'available' && !navigator.userActivation.isActive) {
             throw new Error('需要一次用户点击以开始下载翻译模型。')
         }
-        const translator = await TR.create({
+        return TR.create({
             sourceLanguage,
             targetLanguage,
             monitor(m: any) {
@@ -165,7 +164,6 @@ export default function Page() {
                 })
             },
         })
-        return translator
     }
 
     async function ensureSummarizer() {
@@ -176,7 +174,7 @@ export default function Page() {
         if (status !== 'available' && !navigator.userActivation.isActive) {
             throw new Error('需要一次用户点击以开始下载摘要模型（Gemini Nano）。')
         }
-        const summarizer = await SUM.create({
+        return SUM.create({
             type: sumType,
             format: sumFormat,
             length: sumLength,
@@ -187,7 +185,6 @@ export default function Page() {
                 })
             },
         })
-        return summarizer
     }
 
     async function handleDetect() {
