@@ -8,7 +8,7 @@ import {
     SummarizerType,
     SummarizerFormat,
     SummarizerLength,
-} from '../lib/useOnDeviceAI'
+} from '@/lib/useOnDeviceAI'
 
 function pillColor(status: Availability | 'n/a') {
     switch (status) {
