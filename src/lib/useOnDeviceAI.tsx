@@ -11,11 +11,8 @@ export type SummarizerLength = 'short' | 'medium' | 'long'
 type DownloadProgressEvent = { loaded: number } // 0..1
 
 declare global {
-    // eslint-disable-next-line no-var
     let LanguageDetector: any;
-    // eslint-disable-next-line no-var
     let Translator: any;
-    // eslint-disable-next-line no-var
     let Summarizer: any;
 }
 
